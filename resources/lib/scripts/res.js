@@ -107,21 +107,25 @@ class Carousel {
             .empty()
             .append(
                 this.buttons.back
-                    .on("click", () => {
+                    .off("click.resourcesCarousel")
+                    .on("click.resourcesCarousel", () => {
                         this.goTo(--this.focus);
                     }),
                 this.buttons.text,
                 this.buttons.front
-                    .on("click", () => {
+                    .off("click.resourcesCarousel")
+                    .on("click.resourcesCarousel", () => {
                         this.goTo(++this.focus);
                     })
             );
         this.cards.forEach(($card, idx) => {
             const childNodes = $card.css(this.dimensions)
-                .on("dragstart", e => {
+                .off("dragstart.resourcesCarousel")
+                .on("dragstart.resourcesCarousel", e => {
                     e.preventDefault();
                 })
-                .on("click", e => {
+                .off("click.resourcesCarousel")
+                .on("click.resourcesCarousel", e => {
                     e.preventDefault();
                     if (this.focus == idx)
                         $card.toggleClass("clicked");

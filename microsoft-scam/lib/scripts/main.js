@@ -32,7 +32,7 @@
         $(document.body).append($modal.append(
             $("<div>").append(
                 $("<p>").html(html),
-                $("<span>").text(button).on("click", e => {
+                $("<span>").text(button).one("click", e => {
                     e.preventDefault();
                     $modal.fadeOut("fast");
                     callback();
